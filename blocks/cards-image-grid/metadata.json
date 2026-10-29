@@ -1,0 +1,29 @@
+{
+  "variantName": "cards-image-grid",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "sourceUrl": "https://www.volvotrucks.us/",
+  "visualCharacteristics": {
+    "purpose": "Grid of large image cards with a caption area and centered title and text",
+    "layout": "Horizontal scroll-snap row on mobile, 2-column grid from 600px; an odd last card spans the full width"
+  },
+  "contentPattern": {
+    "structure": "one row per card: cell 1 = image; cell 2 = title (H3) and description",
+    "rows": [
+      [
+        "Cards Image Grid",
+        ""
+      ],
+      [
+        "image",
+        "H3 title, description"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-image-grid"
+  ],
+  "usage": "Our promises section (5 cards).",
+  "reuseGuidance": "Use for feature/benefit image grids. Add or remove rows freely; an odd count makes the last card full width."
+}

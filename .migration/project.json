@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "unrivaled": {
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json",
+      "previewOrg": "mhadysow02",
+      "previewSite": "unrivaled",
+      "contentHostUrl": "https://content.da.live/mhadysow02/unrivaled/"
+    }
+  }
+}

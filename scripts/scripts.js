@@ -167,12 +167,36 @@ async function inlineColorIcons(scope) {
   });
 }
 
+/**
+ * Applies authored Section Metadata tables to their sections
+ * (style → section classes, other keys → data attributes) and removes the tables.
+ * @param {Element} main The container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > .section div.section-metadata').forEach((sectionMeta) => {
+    const section = sectionMeta.closest('.section');
+    const meta = readBlockConfig(sectionMeta);
+    Object.keys(meta).forEach((key) => {
+      if (key === 'style') {
+        meta.style.split(',').map((s) => toClassName(s.trim())).filter(Boolean)
+          .forEach((s) => section.classList.add(s));
+      } else {
+        section.dataset[toCamelCase(key)] = meta[key];
+      }
+    });
+    const wrapper = sectionMeta.parentElement;
+    sectionMeta.remove();
+    if (wrapper !== section && !wrapper.children.length) wrapper.remove();
+  });
+}
+
 export function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   inlineColorIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   if (document.contains(main)) initPageSchemas();
 }
@@ -408,41 +432,6 @@ async function loadLazy(doc) {
 
   loadFooter(footerEl);
   if (!IS_EDITOR) await martechLazy();
-
-  /* Scroll reveal: sections below the viewport animate in as they enter */
-  if (main && 'IntersectionObserver' in window) {
-    const vH = window.innerHeight;
-    const revealSections = [...main.querySelectorAll('.section')].filter((s) => {
-      const { top } = s.getBoundingClientRect();
-      return top > vH;
-    });
-    if (revealSections.length) {
-      revealSections.forEach((s) => s.classList.add('will-reveal'));
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(({ target, isIntersecting }) => {
-          if (!isIntersecting) return;
-          target.classList.add('revealed');
-          revealObserver.unobserve(target);
-        });
-      }, { rootMargin: '0px 0px -60px 0px' });
-      revealSections.forEach((s) => revealObserver.observe(s));
-    }
-  }
-
-  /* Header scroll shadow: add .scrolled class once user scrolls past nav height */
-  const navWrapper = doc.querySelector('.nav-wrapper');
-  if (navWrapper) {
-    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'), 10) || 64;
-    const scrollObserver = new IntersectionObserver(
-      ([entry]) => navWrapper.classList.toggle('scrolled', !entry.isIntersecting),
-      { rootMargin: `-${navH}px 0px 0px 0px` },
-    );
-    const sentinel = document.createElement('div');
-    sentinel.setAttribute('aria-hidden', 'true');
-    sentinel.style.cssText = 'position:absolute;top:0;left:0;height:1px;width:1px;pointer-events:none;';
-    doc.body.prepend(sentinel);
-    scrollObserver.observe(sentinel);
-  }
 
   /* inline logo SVGs in header/footer once they are decorated */
   const waitAndInline = (el) => {

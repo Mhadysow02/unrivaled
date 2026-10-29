@@ -1,0 +1,123 @@
+/* cards-image-grid: values measured on volvotrucks.us (.v2-content-card--images-grid) */
+
+/* mobile: horizontal scroll-snap row that bleeds to the viewport edges */
+.cards-image-grid > ul {
+  display: flex;
+  gap: 16px;
+  margin: 0 calc(-1 * var(--content-padding-inline));
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.cards-image-grid > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-image-grid .cards-image-grid-card {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  width: calc(100vw - 3 * var(--content-padding-inline));
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--light-color);
+  text-align: center;
+  text-wrap: balance;
+  scroll-snap-align: center;
+}
+
+.cards-image-grid .cards-image-grid-card:first-child {
+  margin-left: var(--content-padding-inline);
+}
+
+.cards-image-grid .cards-image-grid-card:last-child {
+  margin-right: var(--content-padding-inline);
+}
+
+.cards-image-grid .cards-image-grid-image {
+  line-height: 0;
+}
+
+.cards-image-grid .cards-image-grid-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  border-radius: 8px 8px 0 0;
+  object-fit: cover;
+}
+
+.cards-image-grid .cards-image-grid-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+}
+
+.cards-image-grid .cards-image-grid-body h3 {
+  margin: 0;
+  letter-spacing: normal;
+}
+
+.cards-image-grid .cards-image-grid-body p {
+  margin: 0;
+}
+
+/* tablet: two-column grid; an odd last card spans the full row */
+@media (width >= 600px) {
+  .cards-image-grid > ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .cards-image-grid .cards-image-grid-card,
+  .cards-image-grid .cards-image-grid-card:first-child,
+  .cards-image-grid .cards-image-grid-card:last-child {
+    width: auto;
+    margin: 0;
+  }
+
+  .cards-image-grid .cards-image-grid-body {
+    padding: 24px 32px;
+  }
+
+  .cards-image-grid .cards-image-grid-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .cards-image-grid .cards-image-grid-card:last-child:nth-child(odd) .cards-image-grid-image img {
+    aspect-ratio: 2 / 1;
+  }
+
+  .cards-image-grid .cards-image-grid-card:last-child:nth-child(odd) .cards-image-grid-body {
+    justify-content: center;
+  }
+}
+
+@media (width >= 1200px) {
+  /* the source grid spans the full 1170px content width, without the inline padding */
+  .cards-image-grid {
+    margin: 0 calc(-1 * var(--content-padding-inline));
+  }
+
+  .cards-image-grid .cards-image-grid-body {
+    gap: 16px;
+    padding: 32px 48px;
+  }
+
+  .cards-image-grid .cards-image-grid-body h3 {
+    letter-spacing: 0.25px;
+  }
+
+  .cards-image-grid .cards-image-grid-card:last-child:nth-child(odd) .cards-image-grid-image img {
+    aspect-ratio: 16 / 10;
+  }
+}

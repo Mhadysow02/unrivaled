@@ -1,0 +1,27 @@
+{
+  "variantName": "form",
+  "baseBlock": "form",
+  "canonicalModel": "standalone",
+  "sourceUrl": "https://www.volvotrucks.us/",
+  "visualCharacteristics": {
+    "purpose": "Form built at runtime from a JSON (spreadsheet) field definition, e.g. the newsletter subscribe form",
+    "layout": "Fields stacked, buttons grouped at the end, status message below"
+  },
+  "contentPattern": {
+    "structure": "one row: a link to the form definition JSON (fields sheet), optionally followed by a second link to the submit endpoint",
+    "rows": [
+      [
+        "Form"
+      ],
+      [
+        "link to form JSON, optional submit endpoint link"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "form"
+  ],
+  "usage": "Newsletter subscribe box in the Stories section (the source used a hosted Pardot form at https://ma.volvotrucks.us/l/1038333/2023-09-06/43jv). The disclaimer text is authored as a paragraph before the block.",
+  "reuseGuidance": "Use for any form defined in a spreadsheet. A newsletter form needs a fields sheet (email + submit) and a submit endpoint; the hosted Pardot form is not embedded by this block."
+}

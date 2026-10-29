@@ -1,0 +1,30 @@
+{
+  "variantName": "hero-card-overlay",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "sourceUrl": "https://www.volvotrucks.us/",
+  "visualCharacteristics": {
+    "purpose": "Full-width background image with a white rounded card holding a heading, text and a link",
+    "layout": "Card overlaid left-center on desktop; stacked below the image on mobile"
+  },
+  "contentPattern": {
+    "structure": "row 1 = background image; row 2 = heading (e.g. H3), paragraph, link",
+    "rows": [
+      [
+        "Hero Card Overlay"
+      ],
+      [
+        "image"
+      ],
+      [
+        "heading, text, link"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "hero-card-overlay"
+  ],
+  "usage": "Find a dealer teaser over a map image.",
+  "reuseGuidance": "Use for teaser bands where text sits in a boxed card over a still image. For video backgrounds use hero-video."
+}

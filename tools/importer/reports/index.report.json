@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.volvotrucks.us/",
+  "path": "index",
+  "timestamp": "2026-10-29T03:24:50.886Z",
+  "title": "Volvo Trucks | Industry-Leading Commercial Semi Trucks",
+  "template": "home",
+  "blocks": [
+    "hero-video",
+    "hero-video",
+    "tabs-truck-lineup",
+    "hero-card-overlay",
+    "cards-image-grid",
+    "cards-story-carousel",
+    "form"
+  ]
+}

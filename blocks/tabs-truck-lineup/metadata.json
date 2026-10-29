@@ -1,0 +1,30 @@
+{
+  "variantName": "tabs-truck-lineup",
+  "baseBlock": "tabs",
+  "canonicalModel": "collection",
+  "sourceUrl": "https://www.volvotrucks.us/",
+  "visualCharacteristics": {
+    "purpose": "Product lineup switcher: large product image with prev/next arrows, tab labels below, then the active product name, description and buttons",
+    "layout": "Image on top, tab list below, text and buttons side by side on desktop",
+    "interactions": "Tab click, arrow keys/Home/End on the tab list, prev/next arrows cycle tabs"
+  },
+  "contentPattern": {
+    "structure": "one row per tab: cell 1 = tab label; cell 2 = product image, heading (model name), description paragraph, CTA links",
+    "rows": [
+      [
+        "Tabs Truck Lineup",
+        ""
+      ],
+      [
+        "tab label",
+        "image, heading, description, CTA links"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "tabs-truck-lineup"
+  ],
+  "usage": "Truck model lineup on the homepage (6 models).",
+  "reuseGuidance": "Use for any set of products switched by labelled tabs with one image each. Optional page metadata carousel-previous-label / carousel-next-label localize the arrows. The section-metadata based tabs block is separate."
+}

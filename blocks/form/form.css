@@ -1,27 +1,12 @@
-/* Contact-style form layout (inspired by contact-us pattern) */
-main .form-container {
-  max-width: min(var(--grid-container-width), 860px);
-  width: 100%;
-  margin: 0 auto;
-  padding: var(--space-l) var(--content-padding-inline);
-  box-sizing: border-box;
-}
+/* Form block — Volvo Trucks form styling (values from volvotrucks.us computed styles) */
 
-main .form-container .form-wrapper {
-  margin-top: var(--space-m);
-}
-
-.form form,
-main .form form {
+.form form {
   display: grid;
-  gap: var(--space-s);
-  border: var(--border-heritage);
-  border-radius: var(--border-radius-heritage);
-  padding: var(--space-l);
-  background: light-dark(var(--color-parchment), var(--color-card-dark));
-  color: inherit;
+  gap: 16px;
   min-width: 0;
   max-width: 100%;
+  margin: 0;
+  color: inherit;
 }
 
 .form [aria-hidden='true'] {
@@ -44,13 +29,22 @@ main .form form {
   scroll-margin: 1em;
   width: 100%;
   min-width: 0;
-  border: 1px solid light-dark(rgb(26 26 26 / 20%), rgb(245 242 237 / 20%));
-  border-radius: 8px;
-  padding: 12px 14px;
-  background: light-dark(var(--color-light), rgb(6 13 13 / 60%));
-  color: inherit;
+  margin: 0;
+  border: 1px solid #a7a8a9;
+  border-radius: 4px;
+  padding: 16px;
+  background-color: var(--color-white);
+  color: var(--color-grey-600);
+  font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
-  transition: border-color 0.25s, box-shadow 0.25s;
+  line-height: 18.2px;
+  letter-spacing: 0.15px;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--color-grey-600);
+  opacity: 1;
 }
 
 .form textarea {
@@ -65,21 +59,6 @@ main .form form {
   background-color: transparent;
 }
 
-.form input:hover,
-.form textarea:hover,
-.form select:hover {
-  border-color: light-dark(var(--color-rust), var(--color-rust-bright));
-}
-
-.form input:focus,
-.form textarea:focus,
-.form select:focus {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 2px;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 4px rgb(197 160 89 / 12%);
-}
-
 .form input:disabled,
 .form textarea:disabled,
 .form select:disabled,
@@ -87,8 +66,7 @@ main .form form {
 .form textarea[readonly],
 .form select[readonly] {
   opacity: 0.6;
-  background: transparent;
-  color: inherit;
+  background-color: transparent;
 }
 
 .form input[type='checkbox'],
@@ -98,25 +76,23 @@ main .form form {
 
 .form .form-field {
   display: grid;
-  gap: 6px;
+  gap: 8px;
   min-width: 0;
 }
 
 .form .form-field > label:first-child,
 .form .form-field > legend {
+  color: var(--color-grey-600);
+  font-family: var(--heading-font-family);
   font-size: var(--body-font-size-s);
-  font-weight: 600;
+  line-height: 18.2px;
+  letter-spacing: 0.15px;
 }
 
 .form label[data-required]::after,
 .form legend[data-required]::after {
   content: '*';
   margin-left: 0.25ch;
-  color: inherit;
-}
-
-.form .form-field + .form-field {
-  margin-top: 0;
 }
 
 .form .form-field.checkbox-field label,
@@ -139,21 +115,6 @@ main .form form {
   width: 1em;
   height: 1em;
   cursor: pointer;
-}
-
-@media (width >= 600px) {
-  .form form,
-  main .form form {
-    padding: var(--space-xl);
-  }
-
-
-  .form .form-field.checkbox-field,
-  .form .form-field.radio-field {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25ch 1em;
-  }
 }
 
 /* Toggle field */
@@ -206,26 +167,25 @@ main .form form {
 }
 
 .form .field-help-text {
-  margin-top: 0.2em;
-  color: inherit;
-  opacity: 0.8;
+  margin: 0;
+  color: var(--text-muted-color);
   font-size: var(--body-font-size-xs);
 }
 
 .form .form-status {
-  margin: var(--space-s) 0 0;
+  margin: 0;
   font-size: var(--body-font-size-s);
-  color: inherit;
-  opacity: 0.9;
 }
 
-/* Buttons – primary submit, secondary reset */
+.form .form-status:empty {
+  display: none;
+}
+
+/* Buttons: submit uses the global primary tokens, reset is the global secondary */
 .form .button-wrapper {
-  margin-top: var(--space-s);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-s);
+  gap: 16px;
 }
 
 .form .button-wrapper button {
@@ -233,41 +193,166 @@ main .form form {
   min-width: fit-content;
 }
 
-.form .button-wrapper button.button {
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
+main .form .button-wrapper button.button:not(.secondary) {
+  min-height: var(--button-height);
+  padding: 0 32px;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
 }
 
-.form .button-wrapper button.button:not(.secondary) {
-  border: 1px solid light-dark(var(--color-rust), var(--color-rust-bright));
-  background: light-dark(var(--color-rust), var(--color-rust-bright));
-  color: var(--color-parchment);
+main .form .button-wrapper button.button:not(.secondary):hover,
+main .form .button-wrapper button.button:not(.secondary):focus-visible {
+  background-color: var(--button-primary-hover-bg);
+  color: var(--button-primary-color);
+  text-decoration: none;
 }
 
-.form .button-wrapper button.button:disabled,
-.form .button-wrapper button.button:hover:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+@media (width >= 600px) {
+  .form .form-field.checkbox-field,
+  .form .form-field.radio-field {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25ch 1em;
+  }
 }
 
-.form .button-wrapper button.button:not(.secondary):hover {
-  background: var(--color-gold);
-  border-color: var(--color-gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px light-dark(rgb(161 79 43 / 25%), rgb(197 160 89 / 25%));
+/* Inline form: a single field followed by its buttons (e.g. newsletter subscribe).
+ * The label is kept for assistive tech; the placeholder carries the visible prompt. */
+.form form:has(> .form-field:first-child + .button-wrapper) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
-.form .button-wrapper button.button.secondary {
-  border: 1px solid light-dark(var(--color-rust), var(--color-rust-bright));
-  background: transparent;
-  color: light-dark(var(--color-rust), var(--color-rust-bright));
+.form form:has(> .form-field:first-child + .button-wrapper) > .form-field {
+  align-self: stretch;
 }
 
-.form .button-wrapper button.button.secondary:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateY(-2px);
+.form form:has(> .form-field:first-child + .button-wrapper) > .form-field > label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.form form:has(> .form-field:first-child + .button-wrapper) input::placeholder {
+  font-family: var(--heading-font-family);
+}
+
+.form form:has(> .form-field:first-child + .button-wrapper) .button-wrapper {
+  flex-wrap: nowrap;
+}
+
+/* Disclaimer + inline form share one grey panel: the default content right before
+ * the form (authored disclaimer) forms the top/left half, the form the bottom/right half. */
+main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper),
+main > .section > .default-content-wrapper + .form-wrapper:has(form > .form-field:first-child + .button-wrapper) {
+  max-width: none;
+  margin-inline: max(16px, calc((100% - var(--content-max-width)) / 2));
+  background-color: var(--color-grey-100);
+}
+
+main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper) {
+  margin-top: 24px;
+  border-radius: 8px 8px 0 0;
+  padding: 24px 24px 0;
+  text-align: center;
+}
+
+main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper) > * {
+  margin: 0;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: normal;
+}
+
+main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper) > * + * {
+  margin-top: 16px;
+}
+
+main > .section > .default-content-wrapper + .form-wrapper:has(form > .form-field:first-child + .button-wrapper) {
+  margin-bottom: 24px;
+  border-radius: 0 0 8px 8px;
+  padding: 24px;
+}
+
+@media (width >= 600px) {
+  .form form:has(> .form-field:first-child + .button-wrapper) {
+    flex-direction: row;
+    gap: 16px;
+    max-width: 616px;
+    margin: 0 auto;
+  }
+
+  .form form:has(> .form-field:first-child + .button-wrapper) > .form-field {
+    flex: 1 1 auto;
+  }
+
+  main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper),
+  main > .section > .default-content-wrapper + .form-wrapper:has(form > .form-field:first-child + .button-wrapper) {
+    margin-inline: max(32px, calc((100% - var(--content-max-width)) / 2));
+  }
+
+  main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper) {
+    padding: 24px 32px 0;
+  }
+
+  main > .section > .default-content-wrapper + .form-wrapper:has(form > .form-field:first-child + .button-wrapper) {
+    padding: 32px 32px 24px;
+  }
+}
+
+@media (width >= 1200px) {
+  .form form:has(> .form-field:first-child + .button-wrapper) {
+    max-width: none;
+    margin: 0;
+  }
+
+  .form form:has(> .form-field:first-child + .button-wrapper) > .form-field {
+    flex: 0 0 300px;
+  }
+
+  /* disclaimer left, form right: the section becomes a two-column grid where every
+   * other child spans both columns, so only the disclaimer + form pair shares a row */
+  main > .section:has(> .default-content-wrapper + .form-wrapper form > .form-field:first-child + .button-wrapper) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    container-type: inline-size;
+  }
+
+  main > .section:has(> .default-content-wrapper + .form-wrapper form > .form-field:first-child + .button-wrapper) > * {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper),
+  main > .section > .default-content-wrapper + .form-wrapper:has(form > .form-field:first-child + .button-wrapper) {
+    display: flex;
+    width: auto;
+    margin-block: 24px;
+  }
+
+  main > .section > .default-content-wrapper:has(+ .form-wrapper form > .form-field:first-child + .button-wrapper) {
+    grid-column: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 0;
+    margin-left: max(16px, calc((100cqi - var(--content-max-width)) / 2));
+    border-radius: 8px 0 0 8px;
+    padding: 32px 32px 32px 48px;
+    text-align: left;
+  }
+
+  main > .section > .default-content-wrapper + .form-wrapper:has(form > .form-field:first-child + .button-wrapper) {
+    grid-column: 2;
+    align-items: center;
+    margin-right: max(16px, calc((100cqi - var(--content-max-width)) / 2));
+    margin-left: 0;
+    border-radius: 0 8px 8px 0;
+    padding: 32px 48px 32px 32px;
+  }
 }

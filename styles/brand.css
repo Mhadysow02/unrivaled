@@ -1,0 +1,84 @@
+/* Brand tokens extracted from https://www.volvotrucks.us/ (computed styles) */
+:root {
+  /* fonts */
+  --body-font-family: volvonovum, volvonovum-fallback, 'Helvetica Neue', arial, sans-serif;
+  --heading-font-family: volvonovum-medium, volvonovum, 'Helvetica Neue', arial, sans-serif;
+  --display-font-family: volvobroadprodigital, 'Arial Narrow', arial, sans-serif;
+  --fixed-font-family: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* colors */
+  --color-ink: #141414;
+  --color-grey-700: #323232;
+  --color-grey-600: #53565a;
+  --color-grey-500: #575757;
+  --color-grey-400: #6e6e6e;
+  --color-grey-300: #a9a9a9;
+  --color-grey-200: #d0d0d0;
+  --color-grey-150: #e1e1e1;
+  --color-grey-100: #f7f7f7;
+  --color-white: #fff;
+  --color-cta-blue: #2b8ede;
+  --background-color: var(--color-white);
+  --text-color: var(--color-ink);
+  --text-muted-color: var(--color-grey-600);
+  --link-color: var(--color-ink);
+  --link-hover-color: var(--color-cta-blue);
+  --light-color: var(--color-grey-100);
+  --dark-color: var(--color-grey-600);
+
+  /* body type */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 13px;
+  --body-line-height: 1.3;
+  --body-letter-spacing: 0.5px;
+
+  /* heading sizes (mobile; desktop values below) */
+  --heading-font-size-display: 70px;
+  --heading-font-size-xl: 32px;
+  --heading-line-height-xl: 40px;
+  --heading-font-size-l: 24px;
+  --heading-line-height-l: 30px;
+  --heading-font-size-m: 20px;
+  --heading-line-height-m: 26px;
+  --heading-font-size-s: 16px;
+  --heading-line-height-s: 20.8px;
+
+  /* buttons */
+  --button-height: 48px;
+  --button-radius: 4px;
+  --button-font-size: 14px;
+  --button-letter-spacing: 1.25px;
+  --button-transition: 0.16s cubic-bezier(0.2, 0, 0.1, 1);
+
+  /* layout */
+  --nav-height: 64px;
+  --content-max-width: 1170px;
+  --content-padding-inline: 16px;
+  --section-space: 40px;
+  --hero-space: 64px;
+  --heading-space: 40px;
+}
+
+@media (width >= 600px) {
+  :root {
+    --content-padding-inline: 32px;
+    --heading-font-size-display: 92px;
+    --section-space: 56px;
+    --hero-space: 80px;
+  }
+}
+
+@media (width >= 1200px) {
+  :root {
+    --heading-font-size-display: 100px;
+    --heading-font-size-xl: 48px;
+    --heading-line-height-xl: 52.8px;
+    --heading-font-size-l: 32px;
+    --heading-line-height-l: 40px;
+    --heading-font-size-m: 24px;
+    --heading-line-height-m: 30px;
+    --section-space: 136px;
+    --heading-space: 48px;
+  }
+}

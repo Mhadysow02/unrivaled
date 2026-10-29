@@ -1,0 +1,30 @@
+{
+  "variantName": "cards-story-carousel",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "sourceUrl": "https://www.volvotrucks.us/",
+  "visualCharacteristics": {
+    "purpose": "Story cards in a horizontal scroll-snap carousel with prev/next arrows",
+    "layout": "Edge-to-edge scroll-snap track; the active story is centred (85% wide on mobile, 506px from 900px, 694px from 1200px) with neighbours peeking; only the active story shows its text",
+    "interactions": "Prev/next arrows (900px+) move one story and disable at the ends; native swipe/scroll; wide screens open on the second story"
+  },
+  "contentPattern": {
+    "structure": "one row per story: cell 1 = image; cell 2 = title (H3, ideally linked), teaser paragraph, date / read-time paragraph, CTA link (e.g. Read full story)",
+    "rows": [
+      [
+        "Cards Story Carousel",
+        ""
+      ],
+      [
+        "image",
+        "H3 title, teaser, date | read time, CTA link"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-story-carousel"
+  ],
+  "usage": "Stories from the road (8 stories).",
+  "reuseGuidance": "Use for article/story teasers in a carousel. The last plain paragraph (when there are at least two) is styled as the meta line. Optional page metadata carousel-previous-label / carousel-next-label localize the arrows."
+}

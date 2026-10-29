@@ -1,0 +1,31 @@
+{
+  "variantName": "hero-video",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "sourceUrl": "https://www.volvotrucks.us/",
+  "visualCharacteristics": {
+    "purpose": "Full-bleed background video (with poster-image fallback) and overlaid heading, text and CTAs",
+    "layout": "Media fills the block; text left-center over it; play/pause toggle bottom-right",
+    "interactions": "Video autoplays muted and looping when near the viewport (skipped with prefers-reduced-motion); play/pause button"
+  },
+  "contentPattern": {
+    "structure": "row 1 = background media: a link to an .mp4/.webm video plus an optional poster image (the poster is also the fallback); row 2 = heading (H1 or H2), paragraph(s), CTA links",
+    "rows": [
+      [
+        "Hero Video"
+      ],
+      [
+        "poster image + video link"
+      ],
+      [
+        "heading, text, CTA links"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "hero-video"
+  ],
+  "usage": "Hero banners and promo bands with a background video, e.g. the homepage hero and the Electromobility banner.",
+  "reuseGuidance": "Use for any section whose background is a video. For a still image with a boxed card, use hero-card-overlay. Optional page metadata video-play-label / video-pause-label localize the toggle."
+}

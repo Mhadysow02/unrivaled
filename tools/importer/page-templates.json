@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://www.volvotrucks.us/"
+      ],
+      "representativeUrl": "https://www.volvotrucks.us/",
+      "description": "Volvo Trucks USA homepage: video hero, truck lineup tabs, dealer locator teaser, electromobility video banner, promises cards, stories carousel and newsletter signup",
+      "urlPattern": "/",
+      "blocks": [
+        {
+          "name": "hero-video",
+          "instances": [
+            ".v2-hero.block",
+            ".v2-video.block"
+          ]
+        },
+        {
+          "name": "tabs-truck-lineup",
+          "instances": [
+            ".v2-truck-lineup.block"
+          ]
+        },
+        {
+          "name": "hero-card-overlay",
+          "instances": [
+            ".v2-dealer-locator-teaser.block"
+          ]
+        },
+        {
+          "name": "cards-image-grid",
+          "instances": [
+            ".v2-content-card.block"
+          ]
+        },
+        {
+          "name": "cards-story-carousel",
+          "instances": [
+            ".v2-stories-carousel.block"
+          ]
+        },
+        {
+          "name": "form",
+          "instances": [
+            ".v2-newsletter__form-container .v2-forms.block"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Hero - All-new Volvo VNX",
+          "selector": [
+            "div.section.v2-hero-container"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-video"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "Truck lineup header",
+          "selector": [
+            "div.section.v2-section-header-container:not(.v2-content-card-container):not(.v2-stories-carousel-container)"
+          ],
+          "style": "centered",
+          "blocks": [],
+          "defaultContent": [
+            ".v2-section-header-wrapper"
+          ]
+        },
+        {
+          "id": "rc3",
+          "name": "Truck lineup tabs/slider",
+          "selector": [
+            "div.section.v2-truck-lineup-container"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-truck-lineup"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc4",
+          "name": "Find a dealer teaser",
+          "selector": [
+            "div.section.v2-dealer-locator-teaser-container"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-card-overlay"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc5",
+          "name": "Electromobility video banner",
+          "selector": [
+            "div.section.v2-video-container"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-video"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc6",
+          "name": "Our promises",
+          "selector": [
+            "div.section.v2-content-card-container"
+          ],
+          "style": "centered",
+          "blocks": [
+            "cards-image-grid"
+          ],
+          "defaultContent": [
+            ".v2-section-header-wrapper"
+          ]
+        },
+        {
+          "id": "rc7",
+          "name": "Stories from the road + newsletter",
+          "selector": [
+            "div.section.v2-stories-carousel-container"
+          ],
+          "style": "centered",
+          "blocks": [
+            "cards-story-carousel",
+            "form"
+          ],
+          "defaultContent": [
+            ".v2-section-header-wrapper",
+            ".v2-newsletter__text"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+/*
+ * cards-story-carousel
+ * Values from volvotrucks.us .v2-stories-carousel computed styles (375 / 900 / 1440).
+ * Edge-to-edge scroll-snap track: the active story is centred with its neighbours
+ * peeking; only the active story shows its text. Arrows sit under the image (900px+).
+ */
+
+/* the track runs edge to edge like the source */
+main > .section > .cards-story-carousel-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.cards-story-carousel {
+  --cards-story-carousel-card-width: 85%;
+  --cards-story-carousel-img-height: 342px;
+  --cards-story-carousel-gap: 12px;
+
+  position: relative;
+  margin-bottom: 24px;
+  color: var(--text-color);
+}
+
+/* track */
+.cards-story-carousel .cards-story-carousel-track {
+  position: relative;
+  display: flex;
+  gap: var(--cards-story-carousel-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: scroll hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.cards-story-carousel .cards-story-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* trailing spacer so the last story can reach the centre */
+.cards-story-carousel .cards-story-carousel-track::after {
+  content: '';
+  flex: 0 0 calc(50% - var(--cards-story-carousel-card-width) / 2);
+}
+
+/* card */
+.cards-story-carousel .cards-story-carousel-card {
+  flex: 0 0 var(--cards-story-carousel-card-width);
+  min-width: 0;
+  scroll-snap-align: center;
+  text-align: center;
+}
+
+.cards-story-carousel .cards-story-carousel-card:first-child {
+  margin-left: calc(50% - var(--cards-story-carousel-card-width) / 2);
+}
+
+.cards-story-carousel .cards-story-carousel-image {
+  line-height: 0;
+}
+
+.cards-story-carousel .cards-story-carousel-image img {
+  display: block;
+  width: 100%;
+  height: var(--cards-story-carousel-img-height);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* text: hidden on the neighbouring stories */
+.cards-story-carousel .cards-story-carousel-body {
+  padding: 24px 0;
+  text-align: center;
+  text-wrap: balance;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s cubic-bezier(0.2, 0, 1, 1);
+}
+
+.cards-story-carousel .cards-story-carousel-card.active .cards-story-carousel-body {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.24s cubic-bezier(0, 0, 0.4, 1);
+}
+
+.cards-story-carousel .cards-story-carousel-body h3 {
+  display: -webkit-box;
+  margin: 0 0 8px;
+  overflow: hidden;
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 400;
+  line-height: var(--heading-line-height-l);
+  letter-spacing: normal;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.cards-story-carousel .cards-story-carousel-body h3 a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards-story-carousel .cards-story-carousel-body h3 a:hover,
+.cards-story-carousel .cards-story-carousel-body h3 a:focus-visible {
+  text-decoration: underline;
+}
+
+.cards-story-carousel .cards-story-carousel-body > p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* date and read time */
+.cards-story-carousel .cards-story-carousel-body > p.cards-story-carousel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 16px;
+  margin-top: 16px;
+  color: var(--text-muted-color);
+}
+
+.cards-story-carousel .cards-story-carousel-body > p.cards-story-carousel-cta {
+  display: block;
+  margin: 16px 0 0;
+  overflow: visible;
+}
+
+/* tertiary link with trailing arrow (source renders an arrow-right icon after the label) */
+main .cards-story-carousel a.button:any-link::after {
+  content: '';
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin-block: -1px; /* source button stays 40px tall with the 24px icon */
+  background-color: currentcolor;
+  mask: url('../../icons/arrow-right.svg') center / 24px 24px no-repeat;
+}
+
+/* prev / next arrows: hidden on small screens like the source */
+.cards-story-carousel .cards-story-carousel-controls {
+  display: none;
+}
+
+.cards-story-carousel .cards-story-carousel-arrow {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.cards-story-carousel .cards-story-carousel-arrow::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-color: currentcolor;
+  mask: url('../../icons/arrow-right.svg') center / 48px 48px no-repeat;
+}
+
+.cards-story-carousel .cards-story-carousel-arrow-prev::before {
+  transform: scaleX(-1);
+}
+
+.cards-story-carousel .cards-story-carousel-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+@media (width >= 900px) {
+  .cards-story-carousel {
+    --cards-story-carousel-card-width: 506px;
+    --cards-story-carousel-img-height: 378px;
+    --cards-story-carousel-gap: 22px;
+  }
+
+  .cards-story-carousel .cards-story-carousel-body {
+    max-width: 419px;
+    margin: 0 auto;
+    padding: 32px 0;
+  }
+
+  .cards-story-carousel .cards-story-carousel-body h3 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.25px;
+  }
+
+  .cards-story-carousel .cards-story-carousel-body > p.cards-story-carousel-meta,
+  .cards-story-carousel .cards-story-carousel-body > p.cards-story-carousel-cta {
+    margin-top: 24px;
+  }
+
+  .cards-story-carousel .cards-story-carousel-controls {
+    position: absolute;
+    top: calc(var(--cards-story-carousel-img-height) + 32px);
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 32px;
+    pointer-events: none;
+  }
+
+  .cards-story-carousel .cards-story-carousel-arrow {
+    pointer-events: auto;
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-story-carousel {
+    --cards-story-carousel-card-width: 694px;
+    --cards-story-carousel-img-height: 520px;
+
+    max-width: calc(694px * 2.9);
+    margin: 0 auto 24px;
+  }
+
+  .cards-story-carousel .cards-story-carousel-body {
+    max-width: 456px;
+  }
+
+  .cards-story-carousel .cards-story-carousel-body > p.cards-story-carousel-meta {
+    font-size: 18px;
+    line-height: 23.4px;
+  }
+
+  .cards-story-carousel .cards-story-carousel-controls {
+    justify-content: flex-end;
+    gap: 24px;
+    padding: 0 135px 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-story-carousel .cards-story-carousel-track {
+    scroll-behavior: auto;
+  }
+}
